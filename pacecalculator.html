@@ -1,30 +1,71 @@
 <html>
-	<h1>Insert fancy title<h1>
+	
+	<head>
+		<link href="pace-calculator.css" rel="stylesheet" type="text/css">
+	</head>
 
-	Distance: <input type="number" name="distance" placeholder="km"><br>
-	Time: <input type="number" name="time" placeholder="hh:mm:ss"><br>
-	Time per km: <input type="number" name="timeperkm" placeholder="mm:ss"><br>
-	Speed: <input type="number" name="speed" placeholder="km/h"><br>
-	<div id="error" style="color:red"></div>
-	<button id="deleteBtn">Delete</button>
+	<body>
+		<div class="site">
+
+			<h1 class="title">Insert fancy title</h1>
+		
+			<div class="pacepanels" type="number" name="distance" placeholder="km">Distance:<div>
+			<input type="number"></input>				
+
+			<div class="pacepanels" type="number" name="time" placeholder="hh:mm:ss">Time:<div>
+			<input type="number"></input>				
+
+			<div class="pacepanels" type="number" name="timeperkm" placeholder="mm:ss">Time per km:<div>
+			<input type="number"></input>				
+
+			<div class="pacepanels" type="number" name="speed" placeholder="km/h">Speed:<div>
+			<input type="number"></input>				
+
+			<div id="error" style="color:red"></div>
+			<button id="deleteBtn" onclick="deleteInputs()">Delete</button>
+		</div>
+	</body>
 
 	<script> 
+
 		var distance = document.getElementsByName("distance")[0];		
 		var time = document.getElementsByName("time")[0];		
 		var timeperkm = document.getElementsByName("timeperkm")[0];		
 		var speed = document.getElementsByName("speed")[0];		
 		var error = document.getElementById("error");
 
-		distance.addEventListener('change', refreshCalculation);
-		time.addEventListener('change', refreshCalculation);
-		timeperkm.addEventListener('change', refreshCalculation);
-		speed.addEventListener('change', refreshCalculation);
+		distance.addEventListener('change', getPace);
+		time.addEventListener('change', getPace);
+		timeperkm.addEventListener('change', getPace);
+		speed.addEventListener('change', getPace);
+
+
+		function getPace() {
+	
+			if(validateInputs()) {
+
+					
+				timeperkm.value = time.value / distance.value; 	
+				speed.value = 60 / timeperkm.value; 
+				// return 22;
+			}
+		}
+
+		function deleteInputs() {
+
+			distance.value = "";
+			time.value = "";
+			timeperkm.value = "";
+			speed.value = "";
+			error = "";
+		}
 
 		function validateInputs() {
 
 			var empty = "";
 
 			if(distance.value == empty || speed.value !== empty && time.value !== empty || speed.value !== empty && time.value !== empty) {
+				
 				error.innerHTML = "Invalid inputs";
 				return false;		
 			}
@@ -32,14 +73,5 @@
 			return true;
 		}
 
-		function refreshCalculation() {
-	
-			if(validateInputs()) {
-				
-				// Actual calculations TODO 
-				timeperkm.value = time.value / distance.value; 	
-				speed.value = 60 / timeperkm.value;
-			}
-		}
 	</script>
 </html>

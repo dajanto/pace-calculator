@@ -1,0 +1,36 @@
+.site {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto auto auto auto; 
+	grid-template-areas: 
+		"title title title title"
+		"pacepanels pacepanels output output"
+		"pacepanels pacepanels output output"
+		"pacepanels pacepanels output output"
+		"pacepanels pacepanels output output"
+		"footer footer footer footer"
+}
+
+.title {
+	grid-area: title;
+	text-align: center;
+	background-color: orange;
+}
+
+.pacepanels {
+	grid-area: main-content;
+	text-align: center;
+	background-color: lightblue;
+}
+
+.output {
+	grid-area: output;
+	text-align: center;
+	background-color: red;
+}
+
+.footer {
+	grid-area: footer;			
+	text-align: center;
+	background-color: green;
+}
