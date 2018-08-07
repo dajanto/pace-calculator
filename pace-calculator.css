@@ -1,65 +1,65 @@
 .site {
+
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-auto-rows: 1fr 1fr 1fr 1fr;
+	grid-gap: 30px;
+	grid-template-columns: 1fr 1fr;
+	grid-auto-rows: 1fr 1fr;
 	grid-template-areas: 
-		"title title title title"
-		"pacepanelDistance paceinputDistance output output"
-		"pacepanelTime paceinputTime output output"
-		"pacepanelTimeperkm paceinputTimeperkm output output"
-		"pacepanelSpeed paceinputSpeed output output"
-		"footer footer footer footer";
+		"title title"
+		"pacepanelDistance paceinputDistance"
+		"pacepanelTime paceinputTime"
+		"pacepanelTimeperkm paceinputTimeperkm"
+		"footer footer";
 }
 
 .title {
+
+	font-style: italic;
 	grid-area: title;
 	text-align: center;
 }
 
-.output {
-	grid-area: output;
-	text-align: center;
-}
 .pacepanelDistance {
+
+	color: #406e8e;
 	grid-area: pacepanelDistance;
 	font-size: 30;
+	font-family: "Arial";
 }
 
 .pacepanelTime {
+
+	color: #406e8e;
 	grid-area: pacepanelTime;
+	font-family: "Arial";
 	font-size: 30;
 }
 
 .pacepanelTimeperkm {
+
 	grid-area: pacepanelTimeperkm;
 	font-size: 30;
-}
-
-.pacepanelSpeed {
-	grid-area: pacepanelSpeed;
-	font-size: 30;
+	color: #406e8e;
+	font-family: "Arial";
 }
 
 .paceinputDistance {
+
 	grid-area: paceinputDistance;
 	font-size: 30;
 	text-align: center;
 }
 
 .paceinputTime {
+
 	grid-area: paceinputTime;
 	text-align: center;
 	font-size: 30;
 }
 
 .paceinputTimeperkm {
-	grid-area: paceinputTimeperkm;
-	text-align: center;
-	font-size: 25;
-}
 
-.paceinputSpeed {
-	grid-area: paceinputSpeed;
+	grid-area: paceinputTimeperkm;
 	text-align: center;
 	font-size: 25;
 }
@@ -71,5 +71,6 @@
 
 .body {
 
-	background-color: lightgreen;
+	background-color: #6ed5f4;
+	margin: 100px;
 }
