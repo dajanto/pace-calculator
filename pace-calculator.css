@@ -1,36 +1,75 @@
 .site {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: auto auto auto auto; 
+	grid-auto-rows: 1fr 1fr 1fr 1fr;
 	grid-template-areas: 
 		"title title title title"
-		"pacepanels pacepanels output output"
-		"pacepanels pacepanels output output"
-		"pacepanels pacepanels output output"
-		"pacepanels pacepanels output output"
-		"footer footer footer footer"
+		"pacepanelDistance paceinputDistance output output"
+		"pacepanelTime paceinputTime output output"
+		"pacepanelTimeperkm paceinputTimeperkm output output"
+		"pacepanelSpeed paceinputSpeed output output"
+		"footer footer footer footer";
 }
 
 .title {
 	grid-area: title;
 	text-align: center;
-	background-color: orange;
-}
-
-.pacepanels {
-	grid-area: main-content;
-	text-align: center;
-	background-color: lightblue;
 }
 
 .output {
 	grid-area: output;
 	text-align: center;
-	background-color: red;
+}
+.pacepanelDistance {
+	grid-area: pacepanelDistance;
+	font-size: 30;
+}
+
+.pacepanelTime {
+	grid-area: pacepanelTime;
+	font-size: 30;
+}
+
+.pacepanelTimeperkm {
+	grid-area: pacepanelTimeperkm;
+	font-size: 30;
+}
+
+.pacepanelSpeed {
+	grid-area: pacepanelSpeed;
+	font-size: 30;
+}
+
+.paceinputDistance {
+	grid-area: paceinputDistance;
+	font-size: 30;
+	text-align: center;
+}
+
+.paceinputTime {
+	grid-area: paceinputTime;
+	text-align: center;
+	font-size: 25;
+}
+
+.paceinputTimeperkm {
+	grid-area: paceinputTimeperkm;
+	text-align: center;
+	font-size: 25;
+}
+
+.paceinputSpeed {
+	grid-area: paceinputSpeed;
+	text-align: center;
+	font-size: 25;
 }
 
 .footer {
 	grid-area: footer;			
 	text-align: center;
-	background-color: green;
+}
+
+.body {
+
+	background-color: lightgreen;
 }

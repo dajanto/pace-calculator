@@ -4,35 +4,28 @@
 		<link href="pace-calculator.css" rel="stylesheet" type="text/css">
 	</head>
 
-	<body>
+	<body class="body">
 		<div class="site">
-
-			<h1 class="title">Insert fancy title</h1>
-		
-			<div class="pacepanels" type="number" name="distance" placeholder="km">Distance:<div>
-			<input type="number"></input>				
-
-			<div class="pacepanels" type="number" name="time" placeholder="hh:mm:ss">Time:<div>
-			<input type="number"></input>				
-
-			<div class="pacepanels" type="number" name="timeperkm" placeholder="mm:ss">Time per km:<div>
-			<input type="number"></input>				
-
-			<div class="pacepanels" type="number" name="speed" placeholder="km/h">Speed:<div>
-			<input type="number"></input>				
-
-			<div id="error" style="color:red"></div>
-			<button id="deleteBtn" onclick="deleteInputs()">Delete</button>
+			<h1 class="title">Pace up!</h1>
+			<div id="pacepanelDistance" class="pacepanelDistance">Distance:</div>
+			<input type=number"  class="paceinputDistance"></input>
+			<div id="output" class="output"></div>
+			<div id="pacepanelTime" class="pacepanelTime">Time:</div>
+			<input id="paceinputTime" class="paceinputTime"></input>				
+			<div id="pacepanelTimeperkm" class="pacepanelTimeperkm">Time per km:</div>
+			<input id="paceinputTimeperkm" class="paceinputTimeperkm"></input>			
+			<div id="pacepanelSpeed" class="pacepanelSpeed">Speed:</div>
+			<input id="paceinputSpeed" class="paceinputSpeed"></input>
+			<button class="footer" onclick="deleteInputs()">Delete</button>
 		</div>
 	</body>
 
 	<script> 
 
-		var distance = document.getElementsByName("distance")[0];		
-		var time = document.getElementsByName("time")[0];		
-		var timeperkm = document.getElementsByName("timeperkm")[0];		
-		var speed = document.getElementsByName("speed")[0];		
-		var error = document.getElementById("error");
+		var distance = document.getElementById("paceinputDistance");		
+		var time = document.getElementById("paceinputTime");		
+		var timeperkm = document.getElementById("paceinputTimeperkm");		
+		var speed = document.getElementById("paceinputSpeed");		
 
 		distance.addEventListener('change', getPace);
 		time.addEventListener('change', getPace);
@@ -57,7 +50,6 @@
 			time.value = "";
 			timeperkm.value = "";
 			speed.value = "";
-			error = "";
 		}
 
 		function validateInputs() {
@@ -66,10 +58,8 @@
 
 			if(distance.value == empty || speed.value !== empty && time.value !== empty || speed.value !== empty && time.value !== empty) {
 				
-				error.innerHTML = "Invalid inputs";
 				return false;		
 			}
-			error.innerHTML = "";
 			return true;
 		}
 
