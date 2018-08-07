@@ -7,15 +7,21 @@
 	<body class="body">
 		<div class="site">
 			<h1 class="title">Pace up!</h1>
-			<div id="pacepanelDistance" class="pacepanelDistance">Distance:</div>
-			<input type=number"  class="paceinputDistance"></input>
+
+			<label id="pacepanelDistance"  class="pacepanelDistance">Distance (km):</label>
+			<input id="paceinputDistance" step="any" type="number" class="paceinputDistance">
+
 			<div id="output" class="output"></div>
-			<div id="pacepanelTime" class="pacepanelTime">Time:</div>
-			<input id="paceinputTime" class="paceinputTime"></input>				
-			<div id="pacepanelTimeperkm" class="pacepanelTimeperkm">Time per km:</div>
-			<input id="paceinputTimeperkm" class="paceinputTimeperkm"></input>			
-			<div id="pacepanelSpeed" class="pacepanelSpeed">Speed:</div>
-			<input id="paceinputSpeed" class="paceinputSpeed"></input>
+
+			<label id="pacepanelTime" class="pacepanelTime">Time (min):</label>
+			<input id="paceinputTime" step="any" class="paceinputTime">				
+
+			<label id="pacepanelTimeperkm" class="pacepanelTimeperkm">Time per km (min):</label>
+			<input id="paceinputTimeperkm" step="any" class="paceinputTimeperkm">			
+
+			<label id="pacepanelSpeed" class="pacepanelSpeed">Speed (km/h):</label>
+			<input id="paceinputSpeed" step="any" class="paceinputSpeed">
+
 			<button class="footer" onclick="deleteInputs()">Delete</button>
 		</div>
 	</body>
@@ -26,30 +32,40 @@
 		var time = document.getElementById("paceinputTime");		
 		var timeperkm = document.getElementById("paceinputTimeperkm");		
 		var speed = document.getElementById("paceinputSpeed");		
+		var output = document.getElementById("output");
 
 		distance.addEventListener('change', getPace);
-		time.addEventListener('change', getPace);
+		time.addEventListener('change', getPace); 
 		timeperkm.addEventListener('change', getPace);
 		speed.addEventListener('change', getPace);
 
 
 		function getPace() {
-	
+
+
 			if(validateInputs()) {
 
-					
-				timeperkm.value = time.value / distance.value; 	
-				speed.value = 60 / timeperkm.value; 
-				// return 22;
+				var tpk = time.value / distance.value;
+				var s = (distance.value / time.value) * 60; 
+
+				return generateNewPace(distance.value, time.value, tpk, s);	
 			}
 		}
 
-		function deleteInputs() {
+		function generateNewPace(distance, time, timerperkm, speed) {
 
-			distance.value = "";
-			time.value = "";
-			timeperkm.value = "";
-			speed.value = "";
+				return {
+					distance: distance,
+					time: time,
+					timeperkm: timeperkm,
+					speed: speed
+				};	
+		}
+
+
+		function displayPace() {
+					
+				output.innerHTML  = getPace();	
 		}
 
 		function validateInputs() {
@@ -61,6 +77,15 @@
 				return false;		
 			}
 			return true;
+		}
+
+		function deleteInputs() {
+
+			output.innerHTML  = JSON.stringify(getPace());	
+			distance.value = "";
+			time.value = "";
+			timeperkm.value = "";
+			speed.value = "";
 		}
 
 	</script>
