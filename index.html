@@ -57,12 +57,19 @@
 		function getPace() {
 
 			if(validInputs()) {
-					
-				footer.innerHTML = "";		
 				console.log("Eingaben valide!");	
-
-				// TODO	
 				
+				var empty = "";
+				footer.innerHTML = empty;		
+
+				// TODO	Calculations
+				if(time.value === empty) {
+					time.value = 42;
+				}
+				
+				if(timeperkm.value === empty) {
+					timeperkm.value = 42;
+				}
 
 			} else {
 				

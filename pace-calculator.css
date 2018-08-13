@@ -27,6 +27,9 @@
 	grid-area: pacepanelDistance;
 	font-size: 30;
 	font-family: 'Roboto', sans-serif;
+	padding-top: 50px;
+	text-align: center;
+	padding-left: 50%;
 }
 
 .pacepanelTime {
@@ -34,7 +37,10 @@
 	color: #406e8e;
 	grid-area: pacepanelTime;
 	font-family: "Arial";
+	padding-top: 50px;
 	font-size: 30;
+	padding-left: 50%;
+	text-align: center;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -42,6 +48,9 @@
 
 	grid-area: pacepanelTimeperkm;
 	font-size: 30;
+	padding-top: 50px;
+	padding-left: 50%;
+	text-align: center;
 	color: #406e8e;
 	font-family: "Arial";
 	font-family: 'Roboto', sans-serif;
@@ -50,8 +59,10 @@
 .paceinputDistance {
 
 	grid-area: paceinputDistance;
+	width: 50%;
 	font-size: 30;
 	text-align: center;
+	width: 50%;
 }
 
 .paceinputTime {
@@ -59,11 +70,13 @@
 	grid-area: paceinputTime;
 	text-align: center;
 	font-size: 30;
+	width: 50%;
 }
 
 .paceinputTimeperkm {
 
 	grid-area: paceinputTimeperkm;
+	width: 50%;
 	text-align: center;
 	font-size: 25;
 }
