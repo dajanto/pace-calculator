@@ -1,7 +1,8 @@
-<html>
-	
+<html>	
 	<head>
-		<link href="pace-calculator.css" rel="stylesheet" type="text/css">
+		<meta charset="utf-8">
+		<link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
+		<link href="pace-calculator.css" rel="stylesheet">
 	</head>
 
 	<body class="body">
@@ -10,70 +11,73 @@
 			<h1 class="title">Pace up!</h1>
 
 			<label id="pacepanelDistance"  class="pacepanelDistance">Distance (km):</label>
-			<input id="paceinputDistance" step="any" type="number" class="paceinputDistance">
+			<input id="paceinputDistance" type="number" class="paceinputDistance">
 
 			<label id="pacepanelTime" class="pacepanelTime">Time (min):</label>
-			<input id="paceinputTime" type="number" step="any" class="paceinputTime">				
+			<input id="paceinputTime" type="number" class="paceinputTime">				
 
 			<label id="pacepanelTimeperkm" class="pacepanelTimeperkm">Time per km (min):</label>
-			<input id="paceinputTimeperkm" type="number" step="any" class="paceinputTimeperkm">			
+			<input id="paceinputTimeperkm" type="number" class="paceinputTimeperkm">			
+
+			<div id="footer" class="footer"></div>
 			
 		</div>
 	</body>
 
 	<script> 
 
+		window.onload = function() {
+
+			distance.focus();
+		}
+		
 		var distance = document.getElementById("paceinputDistance");		
 		var time = document.getElementById("paceinputTime");		
 		var timeperkm = document.getElementById("paceinputTimeperkm");		
+		var footer = document.getElementById("footer");
+
+		distance.addEventListener("keypress", function checkKeyPress(e) {
+
+			console.log(distance.value);
+			getPace();	
+		});
+
+		time.addEventListener("keypress", function checkKeyPress(e) {
+
+			console.log(time.value);
+			getPace();	
+		});
+
+		timeperkm.addEventListener("keypress", function checkKeyPress(e) {
+
+			console.log(timeperkm.value);
+			getPace();	
+		});
 
 		function getPace() {
 
-			// Distance (km)
-			// Time (min)
-			// Time per km (min)
-			// Speed (km/h)
-			
-			// var tpk = time.value / distance.value;
-			// var s = (distance.value / time.value) * 60; 
+			if(validInputs()) {
+					
+				footer.innerHTML = "";		
+				console.log("Eingaben valide!");	
 
-			// MutationObserver()
+				// TODO	
+				
 
-			// Readability
-			var empty = "";
-
-
-			// Select the node that will be observed for mutations
-			var targetNode = distance; 
-
-			// Options for the observer (which mutations to observe)
-			var config = { attributes: true, childList: true, subtree: true };
-
-			// Callback function to execute when mutations are observed
-			var callback = function(mutationsList) {
-			
-				for(var mutation of mutationsList) {
-
-					if (mutation.type == 'childList') {
-						console.log('A child node has been added or removed.');
-					}
-					else if (mutation.type == 'attributes') {
-						console.log('The ' + mutation.attributeName + ' attribute was modified.');
-					}
-				}
-			};
-
-			// Create an observer instance linked to the callback function
-			var observer = new MutationObserver(callback);
-
-			// Start observing the target node for configured mutations
-			observer.observe(targetNode, config);
-
-
-			// generateNewPace(distance.value, time.value, tpk, s);	
+			} else {
+				
+				footer.innerHTML = "Bitte Eingaben überprüfen";		
+			}
 		}
 
-		function generateNewPace(distance, time, timerperkm) {
+		function validInputs() {
+
+			var empty = "";
+
+			return distance.value !== empty && time.value !== empty || distance.value !== empty && timeperkm.value !== empty;
+		}
+
+		function generateNewPace(distance, time, timeperkm) {
 
 				return {
 					distance: distance,

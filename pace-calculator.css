@@ -14,9 +14,11 @@
 
 .title {
 
-	font-style: italic;
 	grid-area: title;
 	text-align: center;
+	font-size: 50;
+	font-family: 'Pacifico', cursive;	
+	transform: scale(1.5);
 }
 
 .pacepanelDistance {
@@ -24,7 +26,7 @@
 	color: #406e8e;
 	grid-area: pacepanelDistance;
 	font-size: 30;
-	font-family: "Arial";
+	font-family: 'Roboto', sans-serif;
 }
 
 .pacepanelTime {
@@ -33,6 +35,7 @@
 	grid-area: pacepanelTime;
 	font-family: "Arial";
 	font-size: 30;
+	font-family: 'Roboto', sans-serif;
 }
 
 .pacepanelTimeperkm {
@@ -41,6 +44,7 @@
 	font-size: 30;
 	color: #406e8e;
 	font-family: "Arial";
+	font-family: 'Roboto', sans-serif;
 }
 
 .paceinputDistance {
@@ -67,10 +71,11 @@
 .footer {
 	grid-area: footer;			
 	text-align: center;
+	font-size: 16px;
 }
 
 .body {
-
 	background-color: #6ed5f4;
 	margin: 100px;
+
 }
