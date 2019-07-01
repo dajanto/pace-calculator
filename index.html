@@ -56,61 +56,77 @@
 			getPace();	
 		});*/
 
-		function resetCount() {
-
-			fieldsFilled = 0;	
-		}
-
+	
 		function getPace() {
 			
 			fieldsFilled++;
 
 			// Check if inputs valid
-			if(fieldsFilled >= 3 || (fieldsFilled == 2 && distance.value == "")) {
+			if(fieldsFilled >= 3) {
 
-				Console.log("Eingaben invalide!");
+				console.log("Eingaben invalide!");
 				
 				resetCount();	
 				deleteInputs();
 
 			} else {
 			
-				console.log("Eingaben valide!");	
-				
-				var empty = "";
-				footer.innerHTML = empty;		
+				if(fieldsFilled == 2) {
 
-				// Determine empty field (to calculate)
-				if(time.value == empty) {
+					console.log("Eingaben valide!");	
+					
+					var empty = "";
+					footer.innerHTML = empty;		
 
-					// Inputs:
-					// Distance
-					// Time per KM
-					time.value = getTime(distance.value,timeperkm.value);
+					// Determine empty field (to calculate)
+					if(time.value == empty) {
 
-				} else if(timeperkm.value == empty) {
-						
+						// Inputs:
+						// Distance
+						// Time per KM
+						time.value = getTime(distance.value,timeperkm.value);
+
+					}  
+
+					if(timeperkm.value == empty) {
+					
 						// Inputs:
 						// Distance
 						// Time
 						timeperkm.value = getTimePerKM(distance.value,time.value);	
+					}	
 
-						}	
+					if(distance.value == empty) {
+						// Inputs:
+						// Time
+						// Time per KM
+						distance.value = getDistance(time.value,timeperkm.value);
+					}
+				}
 			}
 		}
 
-		function getTime(Distance,TimePerKM) {
+		function getTime(distance,timeperkm) {
 			
-			var time; 
-
+			var time = distance * timeperkm;
 			return time;	
 		}
 
-		function getTimePerKM(Distance,Time) {
+		function getTimePerKM(distance,time) {
 
-			var timeperkm; 
-
+			var timeperkm = 1/(distance / time); 	
 			return timeperkm;
+		}
+
+		function getDistance(time,timeperkm) {
+		
+			var distance = time / timeperkm; 
+			return distance;
+		}
+
+		function resetCount() {
+
+			fieldsFilled = 0;	
 		}
 
 		function deleteInputs() {
