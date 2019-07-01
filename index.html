@@ -11,13 +11,13 @@
 			<h1 class="title">Pace up!</h1>
 
 			<label id="pacepanelDistance"  class="pacepanelDistance">Distance (km):</label>
-			<input id="paceinputDistance" type="number" class="paceinputDistance">
+			<input id="paceinputDistance" type="number" class="paceinputDistance" onchange="getPace()">
 
 			<label id="pacepanelTime" class="pacepanelTime">Time (min):</label>
-			<input id="paceinputTime" type="number" class="paceinputTime">				
+			<input id="paceinputTime" type="number" class="paceinputTime" onchange="getPace()">				
 
 			<label id="pacepanelTimeperkm" class="pacepanelTimeperkm">Time per km (min):</label>
-			<input id="paceinputTimeperkm" type="number" class="paceinputTimeperkm">			
+			<input id="paceinputTimeperkm" type="number" class="paceinputTimeperkm" onchange="getPace()">			
 
 			<div id="footer" class="footer"></div>
 			
@@ -26,6 +26,8 @@
 
 	<script> 
 
+		var fieldsFilled = 0;	
+		
 		window.onload = function() {
 
 			distance.focus();
@@ -36,52 +38,79 @@
 		var timeperkm = document.getElementById("paceinputTimeperkm");		
 		var footer = document.getElementById("footer");
 
-		distance.addEventListener("keypress", function checkKeyPress(e) {
+		/*distance.addEventListener("keypress", function checkKeyPress(e) {
 
-			console.log(distance.value);
+		//	console.log(distance.value);
 			getPace();	
 		});
 
 		time.addEventListener("keypress", function checkKeyPress(e) {
 
-			console.log(time.value);
+		//	console.log(time.value);
 			getPace();	
 		});
 
 		timeperkm.addEventListener("keypress", function checkKeyPress(e) {
 
-			console.log(timeperkm.value);
+		//	console.log(timeperkm.value);
 			getPace();	
-		});
+		});*/
+
+		function resetCount() {
+
+			fieldsFilled = 0;	
+		}
 
 		function getPace() {
+			
+			fieldsFilled++;
 
-			if(validInputs()) {
+			// Check if inputs valid
+			if(fieldsFilled >= 3 || (fieldsFilled == 2 && distance.value == "")) {
+
+				Console.log("Eingaben invalide!");
+				
+				resetCount();	
+				deleteInputs();
+
+			} else {
+			
 				console.log("Eingaben valide!");	
 				
 				var empty = "";
 				footer.innerHTML = empty;		
 
-				// TODO	Calculations
-				if(time.value === empty) {
-					time.value = 42;
-				}
-				
-				if(timeperkm.value === empty) {
-					timeperkm.value = 42;
-				}
+				// Determine empty field (to calculate)
+				if(time.value == empty) {
 
-			} else {
-				
-				footer.innerHTML = "Bitte Eingaben überprüfen";		
+					// Inputs:
+					// Distance
+					// Time per KM
+					time.value = getTime(distance.value,timeperkm.value);
+
+				} else if(timeperkm.value == empty) {
+						
+						// Inputs:
+						// Distance
+						// Time
+						timeperkm.value = getTimePerKM(distance.value,time.value);	
+
+						}	
 			}
 		}
 
-		function validInputs() {
+		function getTime(Distance,TimePerKM) {
+			
+			var time; 
 
-			var empty = "";
+			return time;	
+		}
 
-			return distance.value !== empty && time.value !== empty || distance.value !== empty && timeperkm.value !== empty;
+		function getTimePerKM(Distance,Time) {
+
+			var timeperkm; 
+
+			return timeperkm;
 		}
 
 		function deleteInputs() {
@@ -89,7 +118,7 @@
 			distance.value = "";
 			time.value = "";
 			timeperkm.value = "";
-		}
+}
 
 	</script>
 </html>
